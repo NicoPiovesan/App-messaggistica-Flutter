@@ -120,7 +120,7 @@ class _ChatProfilePageState extends State<ChatProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.delete),
-                      Text("Delete chat"),
+                      Text("Elimina Chat"),
                     ],
                   ),
               )

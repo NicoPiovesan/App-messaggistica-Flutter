@@ -38,7 +38,7 @@ class _AuthPageState extends State<AuthPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("Welcome",style: TextStyle(color: Colors.black),),
+        title: Text("Benvenuto/a",style: TextStyle(color: Colors.black),),
         centerTitle: true,
       ),
       body: Container(
@@ -48,16 +48,16 @@ class _AuthPageState extends State<AuthPage> {
           children: [
               TextField(
                 controller: email,
-                decoration: InputDecoration(label:Text("Email"),errorText: email.text.isEmpty||!isValid?"Insert a valid email":null),
+                decoration: InputDecoration(label:Text("Email"),errorText: email.text.isEmpty||!isValid?"Inserisci una email valida":null),
               ),
               TextField(
                 controller: password,
                 obscureText: true,
-                decoration: InputDecoration(label:Text("Password"),errorText: password.text.isEmpty?"Insert a valid password":null),
+                decoration: InputDecoration(label:Text("Password"),errorText: password.text.isEmpty?"Inserisci una password valida":null),
               ),
               !isLogin?TextField(
                 controller: username,
-                decoration: InputDecoration(label:Text("Username"),errorText: username.text.isEmpty?"Insert a valid username":null),
+                decoration: InputDecoration(label:Text("Username"),errorText: username.text.isEmpty?"Inserisci un username valido":null),
               ):Container(),
               ElevatedButton(
                   onPressed: (){
@@ -84,7 +84,7 @@ class _AuthPageState extends State<AuthPage> {
                       isLogin=!isLogin;
                     });
                   },
-                  child: Text(isLogin?"Don't have you an account? Sign In":"Have you an account? Log In")
+                  child: Text(isLogin?"Non hai un account? Registrati":"Hai già un account? Accedi")
               ),
             ],
           ),

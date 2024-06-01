@@ -91,9 +91,9 @@ class _HomePageState extends State<HomePage> {
           ],
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.black,
-            title:  const Text("Conversations", style: TextStyle(fontSize: 32,fontWeight:FontWeight.bold)),
+            title:  const Text("Conversazioni", style: TextStyle(fontSize: 32,fontWeight:FontWeight.bold)),
         ):AppBar(
-          title: const Text("Your Profile",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 28),),
+          title: const Text("Il tuo Profilo",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 28),),
           centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.transparent,
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                       .snapshots(),
                   builder:(context,snapshot){
                     if(!snapshot.hasData){
-                      return Text("No Chats Available");
+                      return Text("Nessuna Chat Disponibile");
                     }else{
                       return ListView(
                         shrinkWrap: true,
@@ -262,7 +262,7 @@ class _HomePageState extends State<HomePage> {
                           openGallery();
                         });
                       },
-                      child:Text("Change profile Icon")
+                      child:Text("Cambia Icona Profilo")
                   ) ,
                 ),
         ),
@@ -271,12 +271,12 @@ class _HomePageState extends State<HomePage> {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.chat),
-              label:"Chats",
+              label:"Chat",
 
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: "Profile",
+              label: "Profilo",
 
             )
           ],
@@ -294,7 +294,7 @@ class _HomePageState extends State<HomePage> {
   searchEmail(BuildContext context) {
     return showDialog(context: context, builder: (context){
       return AlertDialog(
-        title: const Text("Search a contact with his email"),
+        title: const Text("Cerca un contatto con la sua email"),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -302,7 +302,7 @@ class _HomePageState extends State<HomePage> {
               controller: emailCtrl,
               decoration:InputDecoration(
                 enabledBorder:const OutlineInputBorder(),
-                errorText: emailCtrl.text.isEmpty||!isValid?"Insert a valid email":(!found?"No user found":null)
+                errorText: emailCtrl.text.isEmpty||!isValid?"Inserisci una email valida":(!found?"Nessun utente trovato":null)
               ),
             ),
             ElevatedButton(
@@ -318,7 +318,7 @@ class _HomePageState extends State<HomePage> {
                     }
                   });
                 },
-                child: const Text("Create"),
+                child: const Text("Crea"),
             ),
           ],
         ),
@@ -367,8 +367,8 @@ class _HomePageState extends State<HomePage> {
 
   noUserFound(BuildContext context) {
     return AlertDialog(
-      title: Text("No user found"),
-      content: Text("No user Found"),
+      title: Text("Nessun utente trovato"),
+      content: Text("Nessun utente trovato"),
     );
   }
 

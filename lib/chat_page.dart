@@ -165,15 +165,15 @@ class _ChatPageState extends State<ChatPage> {
           .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
+          return Text('Errore: ${snapshot.error}');
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text('Loading...');
+          return const Text('Caricamento...');
         }
 
         if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
-          return const Text('No messages available');
+          return const Text('Nessun messaggio disponibile');
         }
 
         return ListView(
@@ -247,7 +247,7 @@ class _ChatPageState extends State<ChatPage> {
                             height: 0,
                           ),
                           Text(
-                            message == "image" ? "" : message,
+                            message == "immagine" ? "" : message,
                             style: TextStyle(
                               fontSize: 15,
                               color:
@@ -409,7 +409,7 @@ class _ChatPageState extends State<ChatPage> {
             children: [
               ListTile(
                 leading: Icon(Icons.image),
-                title: Text('Gallery'),
+                title: Text('Galleria'),
                 onTap: () {
                   openGallery();
                   Navigator.pop(context);
@@ -417,7 +417,7 @@ class _ChatPageState extends State<ChatPage> {
               ),
               ListTile(
                 leading: Icon(Icons.attach_file),
-                title: Text('Files'),
+                title: Text('File'),
                 onTap: () {
                   openFilePicker();
                   Navigator.pop(context);
@@ -433,11 +433,11 @@ class _ChatPageState extends State<ChatPage> {
   void handleCommand(String command) {
     switch(command){
       case "lightOnLR":
-        messageController.text = "Turn on the Light in the living room";
+        messageController.text = "Accendi la luce nel salotto";
         sendMessage();
         break;
       case "lightOffLR":
-        messageController.text = "Turn off the Light in the living room";
+        messageController.text = "Spegni la luce nel salotto";
         sendMessage();
         break;
       case "lightDimLR":
@@ -455,15 +455,15 @@ class _ChatPageState extends State<ChatPage> {
       itemBuilder: (BuildContext context) => [
         const PopupMenuItem<String>(
           value: 'lightOnLR',
-          child: Text('Turn on the light in the living room'),
+          child: Text('Accendi la luce nel salotto'),
         ),
         const PopupMenuItem<String>(
           value: 'lightOffLR',
-          child: Text('Turn off the light in the living room'),
+          child: Text('Spegni la luce nel salotto'),
         ),
         const PopupMenuItem<String>(
           value: 'lightDimLR',
-          child: Text('Dim the light in the living room'),
+          child: Text('Dimmera la luce nel salotto'),
         ),
       ],
       elevation: 8,
@@ -483,7 +483,7 @@ class _ChatPageState extends State<ChatPage> {
     return TextFormField(
       controller: messageController,
       decoration: InputDecoration(
-        hintText: "Send a message...",
+        hintText: "Invia un messaggio...",
         border: InputBorder.none,
         hintStyle: const TextStyle(
           color: Colors.grey,
@@ -521,17 +521,17 @@ class _ChatPageState extends State<ChatPage> {
     DatabaseReference databaseRef =
     FirebaseDatabase.instance.ref().child('livingRoom/devices/light/');
     switch (message) {
-      case "Turn on the Light in the living room":
+      case "Accendi la luce nel salotto":
         await databaseRef.child("enable").set(true);
-        autoMessage="The light has been turned on in the living room";
+        autoMessage="La luce nel salotto è stata accesa";
         break;
-      case "Turn off the Light in the living room":
+      case "Spegni la luce nel salotto":
         await databaseRef.child("enable").set(false);
-        autoMessage="The light has been turned off in the living room";
+        autoMessage="La luce nel salotto è stata spenta";
         break;
-      case "Dim the light in the living room":
+      case "Dimmera la luce nel salotto":
         showDimmerDialog();
-        autoMessage="The light has been dimmed in the living room";
+        autoMessage="La luce nel salotto è stata dimmerata";
         break;
     }
     await Future.delayed(const Duration(seconds: 1));
@@ -551,7 +551,7 @@ class _ChatPageState extends State<ChatPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Dim the light'),
+          title: Text('Dimmera la luce'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -594,7 +594,7 @@ class _ChatPageState extends State<ChatPage> {
 
   void dimmerLight(double dimmerValue) async{
     if(dimmerValue==0){
-      checkMessage("Turn off the Light in the living room");
+      checkMessage("Spegni la luce nel salotto");
     }
     DatabaseReference databaseRef =
     FirebaseDatabase.instance.ref().child('livingRoom/devices/light/');
